@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: sans-serif;
+}
+
+.block {
+  position: relative;
+  margin: 10% auto 0;
+  width: 50%;
+  height: 400px;
+  background: linear-gradient(0deg, black, rgb(44, 44, 44));
+}
+
+.glow::before,
+.glow::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000
+  );
+  background-size: 400%;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  z-index: -1;
+
+  animation: animate-box-border 20s linear infinite;
+}
+
+@keyframes animate-box-border {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.glow::after {
+  filter: blur(30px);
+  opacity: 1;
+}
